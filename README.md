@@ -15,10 +15,12 @@ I graduated in September 2024 in Computer Engineering; I am now enrolled in the 
 ### My Tech Stack
 
 #### Programming Languages
-![Java](https://img.shields.io/badge/Java%20%E2%98%85%E2%98%85%E2%98%85-007396?style=for-the-badge&logo=openjdk&logoColor=white)
-![Python](https://img.shields.io/badge/Python%20%E2%98%85-14354C?style=for-the-badge&logo=python&logoColor=white)
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-
+![Java](https://img.shields.io/badge/Java%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85-007396?style=for-the-badge&logo=openjdk&logoColor=white)
+![Python](https://img.shields.io/badge/Python%20%E2%98%85%20%E2%98%85-14354C?style=for-the-badge&logo=python&logoColor=white)
+![C](https://img.shields.io/badge/C%20%E2%98%85-00599C?style=for-the-badge&logo=c&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript%20%E2%98%85-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
 #### Machine Learning and Data Science libraries
 
@@ -51,7 +53,6 @@ I graduated in September 2024 in Computer Engineering; I am now enrolled in the 
 
 ### Next steps
 
-![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 
 ![Qiskit](https://img.shields.io/badge/Qiskit-6929C4?style=for-the-badge&logo=qiskit&logoColor=white)
