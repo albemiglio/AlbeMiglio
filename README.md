@@ -2,7 +2,7 @@ Hey there!
 
 I am a graduate Software Engineer from Italy.
 
-I started my coding career in 2016 as a Java junior developer for Minecraft networks. Later in the years, I have made several freelance commissions and started the development of my own network, Novaverse, together with @sgdc3.
+I started my coding career in 2016 as a Java junior developer for Minecraft networks. Later in the years, I have made several freelance commissions and started the development of my own network, Novaverse, together with [@sgdc3](https://github.com/sgdc3).
 
 In 2018 I began coding [Nyx](https://builtbybit.com/resources/18731/), an alts & auto-login management plugin.
 
