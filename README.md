@@ -1,6 +1,6 @@
 Hey there!
 
-I am a graduate Software Engineer from Italy.
+I am a graduate AI & Software Engineer from Italy.
 
 I started my coding career in 2016 as a Java junior developer for Minecraft networks. Later in the years, I have made several freelance commissions and started the development of my own network, Novaverse, together with [@sgdc3](https://github.com/sgdc3).
 
@@ -9,6 +9,8 @@ In 2018 I began coding [Nyx](https://builtbybit.com/resources/18731/), an alts &
 In July 2020, I pushed the first commit for [PowerLib](https://github.com/albemiglio/powerlib), a Java library for Spigot and BungeeCord development.
 
 I graduated in September 2024 in Computer Engineering; I am now enrolled in the AI & Data Analytics MSc course at PoliTo.
+
+I'm currently employed full time as an AI Engineer at [Nebuly](https://nebuly.com).
 
 ## Skills
 
