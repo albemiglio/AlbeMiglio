@@ -17,10 +17,10 @@ I'm currently employed full time as an AI Engineer at [Nebuly](https://nebuly.co
 ### My Tech Stack
 
 #### Programming Languages
-![Java](https://img.shields.io/badge/Java%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85-007396?style=for-the-badge&logo=openjdk&logoColor=white)
-![Python](https://img.shields.io/badge/Python%20%E2%98%85%20%E2%98%85-14354C?style=for-the-badge&logo=python&logoColor=white)
-![C](https://img.shields.io/badge/C%20%E2%98%85-00599C?style=for-the-badge&logo=c&logoColor=white)
-![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
+![Java](https://img.shields.io/badge/Java%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85-007396?style=for-the-badge&logo=openjdk&logoColor=white)
+![Python](https://img.shields.io/badge/Python%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85-14354C?style=for-the-badge&logo=python&logoColor=white)
+![C](https://img.shields.io/badge/C%20%E2%98%85%E2%98%85-00599C?style=for-the-badge&logo=c&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust%20%E2%98%85-000000?style=for-the-badge&logo=rust&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript%20%E2%98%85-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
