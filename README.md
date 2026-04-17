@@ -10,7 +10,7 @@ In July 2020, I pushed the first commit for [PowerLib](https://github.com/albemi
 
 I graduated in September 2024 in Computer Engineering; I am now enrolled in the AI & Data Analytics MSc course at PoliTo.
 
-I'm currently employed full time as an AI Engineer at [Nebuly](https://nebuly.com).
+October 2025 to April 2026, I served full time as AI Engineer at [Nebuly](https://nebuly.com).
 
 ## Skills
 
