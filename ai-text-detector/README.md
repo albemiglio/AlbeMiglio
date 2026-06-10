@@ -63,6 +63,17 @@ si integra allo stesso modo.
 
 ---
 
+## Avvio rapido (utente non tecnico, macOS)
+
+Scompatta la cartella e fai **doppio click su `Avvia AI Detector.command`**.
+Alla prima esecuzione installa i componenti e apre la UI in **Safari** (provider
+**Winston** e lingua **italiano** già impostati, API key precompilata). Vedi
+`LEGGIMI.txt`. Serve solo Python 3 sul Mac.
+
+> ⚠️ La API key è hard-coded in `src/aidetector/config.py` su richiesta esplicita
+> per l'uso "a un click". Chiunque abbia la cartella ha la chiave: non condividere
+> il pacchetto pubblicamente e ruota la chiave se necessario.
+
 ## Installazione
 
 ```bash

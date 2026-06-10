@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from ..config import resolve_api_key
 from .base import Detector
 from .gptzero import GPTZeroDetector
 from .heuristic import HeuristicDetector
@@ -12,6 +13,7 @@ PROVIDERS = ("gptzero", "sapling", "winston", "heuristic")
 
 # Providers that accept a `language` hint (e.g. "it" for Italian).
 _LANGUAGE_AWARE = {"winston", "heuristic"}
+_REMOTE = {"gptzero", "sapling", "winston"}
 
 
 def get_detector(
@@ -25,6 +27,8 @@ def get_detector(
     provider = (provider or "heuristic").lower()
     if provider in _LANGUAGE_AWARE:
         kwargs.setdefault("language", language)
+    if provider in _REMOTE:
+        api_key = resolve_api_key(provider, api_key)
     if provider == "gptzero":
         return GPTZeroDetector(api_key=api_key, **kwargs)
     if provider == "sapling":

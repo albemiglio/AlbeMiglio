@@ -16,6 +16,11 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from aidetector import Analyzer, PROVIDERS  # noqa: E402
+from aidetector.config import (  # noqa: E402
+    DEFAULT_LANGUAGE,
+    DEFAULT_PROVIDER,
+    resolve_api_key,
+)
 from aidetector.detectors import get_detector  # noqa: E402
 from aidetector.models import Label  # noqa: E402
 
@@ -48,8 +53,8 @@ st.sidebar.title("⚙️ Configuration")
 provider = st.sidebar.selectbox(
     "Detection provider",
     PROVIDERS,
-    index=PROVIDERS.index("heuristic"),
-    help="GPTZero/Sapling need an API key. 'heuristic' runs offline (demo).",
+    index=PROVIDERS.index(DEFAULT_PROVIDER),
+    help="Winston is best for Italian. 'heuristic' runs offline (demo).",
 )
 
 env_key = {
@@ -62,15 +67,16 @@ api_key = None
 if env_key:
     api_key = st.sidebar.text_input(
         f"{provider} API key",
-        value=os.getenv(env_key, ""),
+        value=resolve_api_key(provider) or "",
         type="password",
-        help=f"Or set the {env_key} environment variable.",
+        help="Pre-filled. Override here or via the environment variable.",
     )
 
+_langs = ["it", "en", "fr", "es", "de", "pt", "nl", "pl", "ro", "zh"]
 language = st.sidebar.selectbox(
     "Document language",
-    ["en", "it", "fr", "es", "de", "pt", "nl", "pl", "ro", "zh"],
-    index=0,
+    _langs,
+    index=_langs.index(DEFAULT_LANGUAGE) if DEFAULT_LANGUAGE in _langs else 0,
     help="Used by winston (and the heuristic). Use 'it' for Italian.",
 )
 
