@@ -128,3 +128,37 @@ def load_paragraphs(path: str | Path) -> list[str]:
         # PDF paragraphs come from layout analysis, not newline splitting.
         return read_pdf_paragraphs(path)
     return split_paragraphs(load_document(path))
+
+
+def _split_sentences(text: str) -> list[str]:
+    parts = re.split(r"(?<=[.!?])\s+", text.strip())
+    return [p for p in parts if p.strip()]
+
+
+def window_segments(
+    paragraphs: list[str], target_words: int = 300
+) -> list[str]:
+    """Re-segment text into contiguous ~``target_words``-word blocks.
+
+    This mirrors how Turnitin scores submissions: instead of natural
+    paragraphs it works on fixed-size segments (~300 words). We pack whole
+    sentences (across paragraph boundaries) until a segment reaches the target,
+    then start a new one — so sentences are never split mid-way.
+    """
+    sentences: list[str] = []
+    for para in paragraphs:
+        sentences.extend(_split_sentences(para))
+
+    segments: list[str] = []
+    current: list[str] = []
+    count = 0
+    for sentence in sentences:
+        words = len(re.findall(r"\w+", sentence))
+        if current and count + words > target_words:
+            segments.append(" ".join(current))
+            current, count = [], 0
+        current.append(sentence)
+        count += words
+    if current:
+        segments.append(" ".join(current))
+    return segments

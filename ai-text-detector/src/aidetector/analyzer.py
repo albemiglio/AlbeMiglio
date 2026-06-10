@@ -10,7 +10,7 @@ from typing import Callable
 
 from .detectors import get_detector
 from .detectors.base import Detector
-from .document import load_paragraphs, split_paragraphs
+from .document import load_paragraphs, split_paragraphs, window_segments
 from .models import DetectionResult, DocumentResult, ParagraphResult
 
 # Paragraphs shorter than this many words are scored but flagged as unreliable,
@@ -33,22 +33,35 @@ class Analyzer:
         api_key: str | None = None,
         language: str = "en",
         max_workers: int = 4,
+        segmentation: str = "paragraph",
+        window_words: int = 300,
     ):
         self.detector = detector or get_detector(
             provider, api_key=api_key, language=language
         )
         self.max_workers = max(1, max_workers)
+        if segmentation not in ("paragraph", "window"):
+            raise ValueError("segmentation must be 'paragraph' or 'window'")
+        self.segmentation = segmentation
+        self.window_words = window_words
+
+    def _segment(self, paragraphs: list[str]) -> list[str]:
+        if self.segmentation == "window":
+            return window_segments(paragraphs, self.window_words)
+        return paragraphs
 
     # -- public API ------------------------------------------------------
 
     def analyze_file(self, path: str | Path) -> DocumentResult:
         paragraphs = load_paragraphs(path)
-        return self._analyze(paragraphs, source=str(path))
+        return self._analyze(self._segment(paragraphs), source=str(path))
 
     def analyze_text(
         self, text: str, *, source: str = "<text>"
     ) -> DocumentResult:
-        return self._analyze(split_paragraphs(text), source=source)
+        return self._analyze(
+            self._segment(split_paragraphs(text)), source=source
+        )
 
     # -- internals -------------------------------------------------------
 

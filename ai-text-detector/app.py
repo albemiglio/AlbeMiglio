@@ -80,6 +80,19 @@ language = st.sidebar.selectbox(
     help="Used by winston (and the heuristic). Use 'it' for Italian.",
 )
 
+segmentation = st.sidebar.radio(
+    "Segmentation",
+    ["paragraph", "window"],
+    format_func=lambda s: (
+        "Natural paragraphs" if s == "paragraph"
+        else "~300 words (Turnitin-style)"
+    ),
+    help="Score natural paragraphs, or fixed ~N-word segments like Turnitin.",
+)
+window_words = 300
+if segmentation == "window":
+    window_words = st.sidebar.slider("Words per segment", 100, 600, 300, 50)
+
 max_workers = st.sidebar.slider("Parallel requests", 1, 8, 4)
 
 st.sidebar.markdown("---")
@@ -115,7 +128,12 @@ def build_analyzer() -> Analyzer:
     detector = get_detector(
         provider, api_key=api_key or None, language=language
     )
-    return Analyzer(detector=detector, max_workers=max_workers)
+    return Analyzer(
+        detector=detector,
+        max_workers=max_workers,
+        segmentation=segmentation,
+        window_words=window_words,
+    )
 
 
 if run:
@@ -169,14 +187,16 @@ if run:
             icon="ℹ️",
         )
 
-    # ---- per-paragraph highlighted view
-    st.subheader("Per-paragraph breakdown")
+    # ---- per-paragraph / per-segment highlighted view
+    unit_label = "Per-segment" if segmentation == "window" else "Per-paragraph"
+    unit = "§" if segmentation == "window" else "¶"
+    st.subheader(f"{unit_label} breakdown")
     for pr in result.paragraphs:
         if pr.error:
             st.markdown(
                 f"<div style='border-left:4px solid #999;padding:6px 10px;"
                 f"margin:6px 0;background:#f5f5f5'>"
-                f"<b>¶{pr.index + 1}</b> — ⚠️ error: {html.escape(pr.error)}"
+                f"<b>{unit}{pr.index + 1}</b> — ⚠️ error: {html.escape(pr.error)}"
                 f"<br>{html.escape(pr.text[:300])}</div>",
                 unsafe_allow_html=True,
             )
@@ -188,7 +208,7 @@ if run:
             f"<div style='border-left:5px solid {border_for(ai_pct)};"
             f"background:{color_for(ai_pct)};padding:8px 12px;margin:6px 0;"
             f"border-radius:4px'>"
-            f"<b>¶{pr.index + 1}</b> &nbsp; "
+            f"<b>{unit}{pr.index + 1}</b> &nbsp; "
             f"<span style='font-weight:700'>{ai_pct:.1f}% AI</span> "
             f"<span style='opacity:.6'>· {pr.word_count} words</span>{tag}"
             f"<br>{html.escape(pr.text)}</div>",
