@@ -1,8 +1,8 @@
 # 🔎 AI Text Detector
 
 Stima la **percentuale di testo generato da AI** per **ogni paragrafo** e per
-**l'intero documento** (`.txt` / `.docx`). Web UI in Streamlit + CLI, con
-backend di detection intercambiabili (API esterne o fallback offline).
+**l'intero documento** (`.txt` / `.docx` / `.pdf`). Web UI in Streamlit + CLI,
+con backend di detection intercambiabili (API esterne o fallback offline).
 
 ```
 ¶  1  █████████░░░░░░░░░░░░░░░  36.4% AI
@@ -42,7 +42,8 @@ di progetto), mappando lo score sul **paragrafo** e aggregando il totale.
 
 ```
 src/aidetector/
-  document.py        # carica .txt/.docx → paragrafi (split su righe vuote)
+  document.py        # carica .txt/.docx/.pdf → paragrafi
+                     #   .pdf: ricostruzione paragrafi via layout + gap verticali
   detectors/
     base.py          # interfaccia Detector.detect(text) -> DetectionResult
     gptzero.py       # API GPTZero  (POST /v2/predict/text)
@@ -65,7 +66,7 @@ si integra allo stesso modo.
 ## Installazione
 
 ```bash
-pip install -r requirements.txt        # requests, python-docx, streamlit, pytest
+pip install -r requirements.txt        # requests, python-docx, pdfminer.six, streamlit, pytest
 cp .env.example .env                    # inserisci le API key che vuoi usare
 ```
 

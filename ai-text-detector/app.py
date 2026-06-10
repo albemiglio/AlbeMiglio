@@ -78,9 +78,9 @@ st.sidebar.caption(
 # ---------------------------------------------------------------- main
 st.title("🔎 AI Text Detector")
 st.write(
-    "Upload a **.txt** or **.docx** document (or paste text) to estimate the "
-    "AI-generated percentage for **each paragraph** and for the **whole "
-    "document**."
+    "Upload a **.txt**, **.docx** or **.pdf** document (or paste text) to "
+    "estimate the AI-generated percentage for **each paragraph** and for the "
+    "**whole document**."
 )
 
 tab_file, tab_text = st.tabs(["📄 Upload file", "✍️ Paste text"])
@@ -88,7 +88,9 @@ tab_file, tab_text = st.tabs(["📄 Upload file", "✍️ Paste text"])
 text_input = None
 uploaded = None
 with tab_file:
-    uploaded = st.file_uploader("Choose a document", type=["txt", "docx", "md"])
+    uploaded = st.file_uploader(
+        "Choose a document", type=["txt", "docx", "pdf", "md"]
+    )
 with tab_text:
     text_input = st.text_area("Paste your text here", height=240)
 
