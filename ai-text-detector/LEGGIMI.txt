@@ -1,0 +1,36 @@
+AI TEXT DETECTOR — come usarlo (macOS)
+======================================
+
+1) Scompatta questa cartella (di solito basta un doppio click sullo .zip).
+
+2) Doppio click su:   «Avvia AI Detector.command»
+
+   ⚠️ La PRIMA volta macOS potrebbe bloccarlo con un avviso di sicurezza
+   ("impossibile aprire... sviluppatore non identificato").
+   In quel caso:
+     - tasto DESTRO (o Ctrl+click) sul file «Avvia AI Detector.command»
+     - scegli «Apri»
+     - nella finestra che appare, conferma «Apri».
+   Va fatto solo la prima volta.
+
+3) Si aprirà una finestra nera (Terminale): lasciala aperta.
+   La PRIMA volta installa i componenti (1–2 minuti, serve internet).
+   Poi si aprirà da solo Safari sull'interfaccia.
+
+4) Nell'interfaccia:
+     - trascina o scegli il tuo file (.pdf, .docx o .txt)
+     - clicca «Analyse»
+     - leggi la percentuale AI per ogni paragrafo e il totale
+     - puoi scaricare il report (HTML o JSON).
+
+   Provider e lingua sono già impostati: Winston + Italiano.
+   La chiave API è già configurata.
+
+5) Per CHIUDERE: torna nella finestra nera e premi Ctrl+C,
+   oppure chiudi la finestra.
+
+Serve solo Python 3 installato sul Mac. Se non c'è, il programma ti porta
+alla pagina ufficiale per installarlo.
+
+NOTA: i rilevatori di testo AI non sono affidabili al 100% (soprattutto su
+testi non in inglese). Usa i risultati come indicazione, non come prova.
