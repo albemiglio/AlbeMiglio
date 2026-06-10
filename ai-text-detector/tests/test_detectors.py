@@ -45,3 +45,20 @@ def test_gptzero_fallback_to_completely_generated_prob():
     result = GPTZeroDetector._parse(payload)
     assert result.ai_probability == 0.8
     assert result.label == Label.AI
+
+
+def test_winston_human_score_inverted_to_ai_probability():
+    from aidetector.detectors.winston import WinstonDetector
+
+    # Winston: score is a HUMAN score (100 = human, 0 = AI).
+    assert WinstonDetector._parse({"score": 90}).ai_probability == 0.1
+    assert WinstonDetector._parse({"score": 10}).ai_probability == 0.9
+    res = WinstonDetector._parse({"score": 10})
+    assert res.label == Label.AI
+    assert res.provider == "winston"
+
+
+def test_winston_requires_key(monkeypatch):
+    monkeypatch.delenv("WINSTON_API_KEY", raising=False)
+    with pytest.raises(ValueError):
+        get_detector("winston")

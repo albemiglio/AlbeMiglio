@@ -33,12 +33,19 @@ def main(argv: list[str] | None = None) -> int:
         help="Detection backend (default: heuristic / offline demo)",
     )
     parser.add_argument("--api-key", default=None, help="API key for the provider")
+    parser.add_argument(
+        "--language", default="en",
+        help="Document language hint, e.g. 'it' (used by winston/heuristic)",
+    )
     parser.add_argument("--workers", type=int, default=4, help="Parallel requests")
     parser.add_argument("--json", metavar="FILE", help="Write a JSON report")
+    parser.add_argument("--html", metavar="FILE", help="Write an HTML report")
     args = parser.parse_args(argv)
 
     try:
-        detector = get_detector(args.provider, api_key=args.api_key)
+        detector = get_detector(
+            args.provider, api_key=args.api_key, language=args.language
+        )
     except ValueError as exc:
         parser.error(str(exc))
 
@@ -83,6 +90,12 @@ def main(argv: list[str] | None = None) -> int:
             json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
         )
         print(f"\nJSON report written to {args.json}")
+
+    if args.html:
+        from aidetector.report import write_html
+
+        write_html(result, args.html)
+        print(f"HTML report written to {args.html}")
     return 0
 
 

@@ -55,6 +55,7 @@ provider = st.sidebar.selectbox(
 env_key = {
     "gptzero": "GPTZERO_API_KEY",
     "sapling": "SAPLING_API_KEY",
+    "winston": "WINSTON_API_KEY",
 }.get(provider)
 
 api_key = None
@@ -65,6 +66,13 @@ if env_key:
         type="password",
         help=f"Or set the {env_key} environment variable.",
     )
+
+language = st.sidebar.selectbox(
+    "Document language",
+    ["en", "it", "fr", "es", "de", "pt", "nl", "pl", "ro", "zh"],
+    index=0,
+    help="Used by winston (and the heuristic). Use 'it' for Italian.",
+)
 
 max_workers = st.sidebar.slider("Parallel requests", 1, 8, 4)
 
@@ -98,7 +106,9 @@ run = st.button("Analyse", type="primary")
 
 
 def build_analyzer() -> Analyzer:
-    detector = get_detector(provider, api_key=api_key or None)
+    detector = get_detector(
+        provider, api_key=api_key or None, language=language
+    )
     return Analyzer(detector=detector, max_workers=max_workers)
 
 
@@ -200,9 +210,18 @@ if run:
             for p in result.paragraphs
         ],
     }
-    st.download_button(
+    from aidetector.report import render_html
+
+    col_json, col_html = st.columns(2)
+    col_json.download_button(
         "⬇️ Download JSON report",
         data=json.dumps(export, ensure_ascii=False, indent=2),
         file_name="ai_detection_report.json",
         mime="application/json",
+    )
+    col_html.download_button(
+        "⬇️ Download HTML report",
+        data=render_html(result),
+        file_name="ai_detection_report.html",
+        mime="text/html",
     )

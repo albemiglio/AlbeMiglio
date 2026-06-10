@@ -107,9 +107,15 @@ for p in result.paragraphs:
 
 | Provider | API key | Note |
 |---|---|---|
-| `gptzero` | `GPTZERO_API_KEY` | Score documento/paragrafo/frase. [Docs](https://gptzero.stoplight.io/docs/gptzero-api) |
+| `winston` | `WINSTON_API_KEY` | **Multilingua, consigliato per l'italiano** (`--language it`). Score documento + frase. [Docs](https://docs.gowinston.ai/) |
+| `gptzero` | `GPTZERO_API_KEY` | Score documento/paragrafo/frase. Tarato sull'inglese. [Docs](https://gptzero.stoplight.io/docs/gptzero-api) |
 | `sapling` | `SAPLING_API_KEY` | Score documento + frase. [Docs](https://sapling.ai/ai-detection-apis) |
-| `heuristic` | — | **Offline demo** (burstiness + stilometria). Non affidabile, serve a far girare e testare lo strumento senza key. |
+| `heuristic` | — | **Offline demo** (burstiness + stilometria, language-aware EN/IT). Non affidabile, serve a far girare e testare lo strumento senza key. |
+
+> **Nota su Turnitin:** Turnitin **non** è utilizzabile qui — è un servizio
+> proprietario venduto solo alle istituzioni (integrato negli LMS), senza API
+> pubblica per i singoli e con algoritmo chiuso. Non è replicabile "esattamente".
+> Per l'italiano l'alternativa più vicina con API è **Winston**.
 
 Aggiungere un provider = una sottoclasse di `Detector` che implementa
 `detect(text) -> DetectionResult` e una voce nella factory in

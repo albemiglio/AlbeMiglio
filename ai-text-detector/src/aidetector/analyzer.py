@@ -31,9 +31,12 @@ class Analyzer:
         *,
         provider: str = "heuristic",
         api_key: str | None = None,
+        language: str = "en",
         max_workers: int = 4,
     ):
-        self.detector = detector or get_detector(provider, api_key=api_key)
+        self.detector = detector or get_detector(
+            provider, api_key=api_key, language=language
+        )
         self.max_workers = max(1, max_workers)
 
     # -- public API ------------------------------------------------------
