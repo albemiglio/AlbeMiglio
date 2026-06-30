@@ -69,5 +69,5 @@ October 2025 to April 2026, I served full time as AI Engineer at [Nebuly](https:
 
 ## Github statistics
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=AlbeMiglio&theme=onedark&no-bg=true)](https://github.com/ryo-ma/github-profile-trophy)
-[![my github stats](https://github-readme-stats.vercel.app/api?username=AlbeMiglio)](https://github.com/anuraghazra/github-readme-stats)
+[![trophy](https://trophy.benkou.dev/?username=AlbeMiglio&theme=onedark&no-bg=true)](https://github.com/ryo-ma/github-profile-trophy)
+[![my github stats](https://github-stats-extended.vercel.app/api?username=AlbeMiglio)](https://github.com/stats-organization/github-stats-extended)
